@@ -1,28 +1,177 @@
-## Backend Technical Test
+## Article Backend Rest API
 
-You have been asked to implement a __REST API__ that allows its consumers to create *articles*. Each *article* has a `title`, `content`, `author's name`, `date created` and `date updated`.
+This git hub repository has *Article CRUD REST API* implementation using Typescript, ES6, MongoDB and Node JS.
 
-### Functional requirements
+This Atricle API conatins functions like create, read, upadte, delete Articles and Search articles based on Author and/Or Title.
 
-1. Implement an endpoint to *create* an article
-2. Implement an endpoint to *get all* articles (paginated)
+  
 
-### Non functional Requirements
+#### Article Model :
+```javascript
+article {
+  keywords :
+  title: {
+    type: String
+  },
+  content: {
+    type: String
+  },
+  author: {
+    type: String
+  },
+  created_date : {
+    type: Date
+  },
+  updated_date : {
+    type: Date    
+  }
+}
+```
 
-1. Implement using **JavaScript ES6**
-2. Test coverage using any testing framework (TDD or BDD)
-3. Use a **NoSQL** datastore (any)
-4. Write instructions of how to run the application in `README.md`
+## Development environment setup
 
-### Bonus Features:
+### Prerequisites :
 
-1. Implement an endpoint to *search* articles by *author's name* and/or *title*.
-2. Use **Typescript**.
-3. Use **mocha** and **chai** for testing.
-4. Use **MongoDB** as datastore.
+ Make sure Mongo DB is up and running.
+ Make sure Node JS and NPM is installed.
+ 
+Run the following commnads in a terminal :
+```sh
+git clone https://github.com/bluemix21/connido-backend-technical-test.git
 
-### Delivery of your solution
+npm install
 
-Fork this repository and implement your solution on the fork. Once you are happy with your solution, please email us the link to your fork.
+```
+
+### Update config.js file
+
+ Please alter the config.js file based on mongo db url, mongo db test url and node server port.
+```javascript
+{    
+    "port": 3001,
+    "mongo_url": "mongodb://localhost/articledb",
+	"mongo_url_test": "mongodb://localhost/articledb_10"
+}
+
+```
+
+### Start the Node server
+```sh
+
+npm run dev
+
+```
+
+API will be hosted on localhost:3001/api/article
+
+
+## API documentation
+
+
+### Create article
+
+	POST /api/article
+
+#### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| title			| 			|  <p>Article's title.</p>							|
+| content			| 			|  <p>Article's content.</p>							|
+| author			| 			|  <p>Article's author.</p>							|
+
+created_date and created_date properties will be automatically updated by REST API
+
+```sh
+
+Request Type : post
+URL: http://localhost:3001/api/article
+body:{"title": "Article Title","content": "Article Content","author": "Article_Author"}
+
+```
+
+
+
+### Delete article
+
+	DELETE /api/article/:id
+```sh
+
+Request Type : delete
+URL: http://localhost:3001/api/article/5bdd6189b080427a5070d0b5
+
+```
+
+
+
+### Retrieve article by Id
+
+	GET /api/article/:id
+
+```sh
+
+Request Type : get
+http://localhost:3001/api/article/56c787ccc67fc11a5e92
+  
+```
+
+
+### Retrieve articles using pagination 
+	GET /articles
+
+#### Parameters
+
+	GET /api/article?limit=3&skip=2						|
+
+    limit - if limit is set to 3 then limit parameter will return only 3 articles.
+	skip - if skip is set to 2 then application will not select first 2 item from the list.
+
+```sh
+
+Request Type : get
+URL: http://localhost:3001/api/article?limit=3&skip=2
+
+```
+
+### Update article
+	PUT api/article/:id
+
+
+#### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| title			| 			|  <p>Article's title.</p>							|
+| content			| 			|  <p>Article's content.</p>							|
+| author			| 			|  <p>Article's author.</p>							|
+
+```sh
+
+Request Type : PUT
+URL: http://localhost:3001/api/article/5bdd859045aa8c06a82b0b89
+body:{"title": "Article Title","content": "Article Content","author": "Article_Author"}
+
+```
+
+## unitTesting
+
+mocha and Chai has been used to do testing. Please configure different database for testing so that it will affect dev database.
+
+To configure testing database please complete below stesps.
+1)set below environment variable in the test console/terminal
+
+For Windows
+```sh
+set NODE_ENV=test
+```
+
+2)Alter config.js file with valid test database, this file located in the root folder.
+
+
+#### Running the test suites
+```sh
+npm run test
+```
+
 
 
