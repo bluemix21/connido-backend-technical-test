@@ -2,7 +2,7 @@
 
 This git hub repository has *Article CRUD REST API* implementation using Typescript, ES6, MongoDB and Node JS.
 
-This Atricle API conatins functions like create, read, upadte, delete Articles and Search articles based on Author and/Or Title.
+This Atricle API conatins functions like create, read, update, delete Articles and Search articles based on Author and/Or Title.
 
   
 
@@ -121,7 +121,7 @@ http://localhost:3001/api/article/56c787ccc67fc11a5e92
 
 #### Parameters
 
-	GET /api/article?limit=3&skip=2						|
+	GET /api/article?limit=3&skip=2
 
     limit - if limit is set to 3 then limit parameter will return only 3 articles.
 	skip - if skip is set to 2 then application will not select first 2 item from the list.
@@ -153,12 +153,15 @@ body:{"title": "Article Title","content": "Article Content","author": "Article_A
 
 ```
 
-## unitTesting
+## UnitTesting
 
-mocha and Chai has been used to do testing. Please configure different database for testing so that it will affect dev database.
+mocha and Chai has been used to do testing. 
+
+Please configure different database for testing so that it will affect dev database.
 
 To configure testing database please complete below stesps.
-1)set below environment variable in the test console/terminal
+
+1)set below environment variable in the test console/terminal, if not set then application will insert data in development database.
 
 For Windows
 ```sh
