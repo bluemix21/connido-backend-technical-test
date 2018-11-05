@@ -117,7 +117,7 @@ http://localhost:3001/api/article/56c787ccc67fc11a5e92
 
 
 ### Retrieve articles using pagination 
-	GET /articles
+	GET /api/article
 
 #### Parameters
 
@@ -150,6 +150,60 @@ URL: http://localhost:3001/api/article?limit=3&skip=2
 Request Type : PUT
 URL: http://localhost:3001/api/article/5bdd859045aa8c06a82b0b89
 body:{"title": "Article Title","content": "Article Content","author": "Article_Author"}
+
+```
+
+### Retrieve articles By Author 
+	GET /api/articleByAuthor?author=tomcruise
+
+#### Parameters
+
+	GET /api/articleByAuthor?author=tomcruise
+
+    author - Provide Author name to find list of atricles under an Author.
+
+```sh
+
+Request Type : get
+URL: http://localhost:3001/api/articleByAuthor?author=tomcruise
+
+```
+
+### Retrieve articles By Article Title 
+
+	GET /api/articleByTitle?title=sampleTitle
+
+#### Parameters
+
+	GET /api/articleByTitle?title=sampleTitle
+
+    title - Provide Title to find list of atricles under the title.
+
+```sh
+
+Request Type : get
+URL: http://localhost:3001/api/articleByTitle?title=sampleTitle
+
+```
+
+### Retrieve articles By Article Title And/Or Title
+
+	GET /api/articleByAuthorAndOrTitle?title=orkut 1212&author=cook tom&condition=and
+
+#### Parameters
+
+	GET /api/articleByAuthorAndOrTitle?title=orkut 1212&author=cook tom&condition=and
+
+    title - Provide Title to find list of atricles under the title.
+	author - Provide Author name to find list of atricles under an Author.
+	condition- valid values are 1) AND 2) OR
+	
+
+```sh
+
+Request Type : get
+URL: http://localhost:3001/api/articleByAuthorAndOrTitle?title=orkut 1212&author=cook tom&condition=and
+URL: http://localhost:3001/api/articleByAuthorAndOrTitle?title=orkut 1212&author=cook tom&condition=or
 
 ```
 
